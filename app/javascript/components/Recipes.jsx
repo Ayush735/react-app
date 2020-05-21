@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Example2 from "./Example2"
 class Recipes extends React.Component {
   constructor(props) {
     super(props);
@@ -73,6 +73,17 @@ class Recipes extends React.Component {
               Home
             </Link>
           </main>
+            <Example2 link="https://jsonplaceholder.typicode.com/users" render={({list, isLoading, error })=>(
+              <div>
+                <h2>Random Users through render props</h2>
+                {error ? <p>{error.message}</p> : null}
+                {isLoading ? (
+                  <h2>Loading...</h2>
+                ) : (
+                  <ul>{list.map(user => <li key={user.id}>{user.name}</li>)}</ul>
+                )}
+              </div>
+            )}/>
         </div>
       </div>
     );
