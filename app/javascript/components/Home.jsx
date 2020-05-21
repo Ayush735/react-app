@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MouseTracker from "./MouseTracker";
+import Mouse from "./Mouse";
+import Wrapper from "./Wrapper"
 const MyContext = React.createContext();
 
 class Coder2 extends React.Component{
@@ -9,11 +10,23 @@ class Coder2 extends React.Component{
     return(
       <div>
         <h1> My age id {this.context.age}</h1>
+        <Wrapper
+          render={({ increment, decrement, count }) => (
+          <div>
+            <div>
+              <h3>Render Props Counter</h3>
+            </div>
+            <div>
+              <p>{count}</p>
+              <button onClick={() => increment()}>Increment</button>
+              <button onClick={() => decrement()}>Decrement</button>
+            </div>
+          </div>
+        )}/>
       </div>
-      );
+    );
   }
 }
-
 // const Coder2 = () => {
 //   return (
 //     <MyContext.Consumer>
@@ -36,7 +49,7 @@ const Coder1 = () => {
             <h1>My name is {data.name}</h1>
             <h1>My age is {data.age}</h1>
             <Coder2/>
-            <MouseTracker/>
+            <Mouse/>
           </div>
           )
         }

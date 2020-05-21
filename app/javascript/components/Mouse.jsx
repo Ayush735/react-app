@@ -1,5 +1,14 @@
 import React from 'react';
 
+class Cat extends React.Component{
+  render(){
+    const mouse = this.props.mouse;
+    return(
+      <img src="https://picsum.photos/id/237/200/300" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+    )
+  }
+}
+
 class MouseTracker extends React.Component {
   constructor(props) {
     super(props);
@@ -13,15 +22,25 @@ class MouseTracker extends React.Component {
       y: event.clientY
     });
   }
-
   render() {
     return (
       <div onMouseMove={this.handleMouseMove}>
-        <h1>Move the mouse around!</h1>
+        <Cat mouse={this.state} />
         <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
       </div>
     );
   }
 }
 
-export default MouseTracker;
+class Mouse extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <MouseTracker />
+      </div>
+    );
+  }
+}
+
+export default Mouse;
