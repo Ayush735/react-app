@@ -8,7 +8,6 @@ class Recipes extends React.Component {
       recipes: []
     };
   }
-
   componentDidMount() {
     const url = "/api/v1/recipes/index";
     fetch(url)
@@ -49,7 +48,7 @@ class Recipes extends React.Component {
     );
 
     return (
-      <>
+      <div>
         <section className="jumbotron jumbotron-fluid text-center">
           <div className="container py-5">
             <h1 className="display-4">Recipes for every occasion</h1>
@@ -75,7 +74,7 @@ class Recipes extends React.Component {
             </Link>
           </main>
         </div>
-      </>
+      </div>
     );
   }
 }

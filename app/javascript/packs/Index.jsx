@@ -32,9 +32,15 @@ import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import App from "../components/App";
 import Recipes from "../components/Recipes";
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducer';
+const store = createStore(reducer);
+
 document.addEventListener("DOMContentLoaded", () => {
   render(
-    <App />,
+    <Provider store={store}><App /></Provider>,
     document.body.appendChild(document.createElement("div"))
   );
 });

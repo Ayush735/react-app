@@ -38,7 +38,7 @@ class NewRecipe extends React.Component{
       },
       body: JSON.stringify(body)
     }).then(response=>{
-    	if(resoinse.ok){
+    	if(response.ok){
     		return response.json();
     	}throw new Error("Network response was not ok.");
     }).then(response => this.props.history.push(`/recipe/${response.id}`))
