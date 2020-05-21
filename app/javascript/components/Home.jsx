@@ -2,18 +2,45 @@ import React from "react";
 import { Link } from "react-router-dom";
 const MyContext = React.createContext();
 
-const Coder3 = () => {
+class Coder2 extends React.Component{
+  static contextType = MyContext
+  render(){
+    return(
+      <div>
+        <h1> My age id {this.context.age}</h1>
+      </div>
+      );
+  }
+}
+
+// const Coder2 = () => {
+//   return (
+//     <MyContext.Consumer>
+//       {(data)=>{
+//         return(
+//           <h1>coder2</h1>
+//         ) 
+//       }
+//       }
+//     </MyContext.Consumer>
+//   )
+// }
+const Coder1 = () => {
   return (
     <MyContext.Consumer>
-      {(data)=>{
-        return <h1>My name is {data}</h1>
-      }
+      {
+        (data)=>{
+          return(
+            <React.Fragment>
+            <h1>My name is {data.name}</h1>
+            <h1>My age is {data.age}</h1>
+            <Coder2/>
+          </React.Fragment>
+          )
+        }
       }
     </MyContext.Consumer>
   )
-}
-const Coder1 = () => {
-  return <Coder3/>
 }
 
 const Coder = () => {
@@ -27,7 +54,7 @@ class Home extends React.Component{
         <div className="jumbotron jumbotron-fluid bg-transparent">
           <div className="container secondary-color">
             <h1 className="display-4">Food Recipes</h1>
-            <MyContext.Provider value="Ayush">
+            <MyContext.Provider value={{name: "Ayush", age:25}}>
               <Coder/>
             </MyContext.Provider>
             <p className="lead">
