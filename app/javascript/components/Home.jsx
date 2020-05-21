@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MouseTracker from "./MouseTracker";
 const MyContext = React.createContext();
 
 class Coder2 extends React.Component{
@@ -31,11 +32,12 @@ const Coder1 = () => {
       {
         (data)=>{
           return(
-            <React.Fragment>
+            <div>
             <h1>My name is {data.name}</h1>
             <h1>My age is {data.age}</h1>
             <Coder2/>
-          </React.Fragment>
+            <MouseTracker/>
+          </div>
           )
         }
       }
